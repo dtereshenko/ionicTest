@@ -1,0 +1,17 @@
+<ion-navbar>
+    <ion-title>Choose your Series</ion-title>
+</ion-navbar>
+<ion-content padding class="getting-started">
+
+    <ion-list>
+        <ion-item *ngFor="#item of items">
+            <ion-thumbnail item-left>
+                <img [src]="item.thumbnail">
+            </ion-thumbnail>
+            <h2>{{item.title}}</h2>
+            <p>{{item.author}} • {{item.release}}</p>
+            <button outline item-right (click)="showMore()">View</button>
+        </ion-item>
+    </ion-list>
+
+</ion-content>
