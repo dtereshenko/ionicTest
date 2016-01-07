@@ -1,6 +1,6 @@
 import {App, IonicApp, Platform} from 'ionic/ionic';
 
-import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
+import {HelloIonicPage} from './pages/list-page/hello-ionic';
 import {ListPage} from './pages/list/list';
 
 @App({

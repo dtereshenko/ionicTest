@@ -1,20 +1,13 @@
 <ion-navbar *navbar>
-    <button menuToggle *ngIf="!selectedItem">
-        <icon menu></icon>
-    </button>
     <ion-title>Details</ion-title>
 </ion-navbar>
 
 <ion-content>
     <ion-card>
-        <img src="http://d.ibtimes.co.uk/en/full/1431252/walking-dead.jpg" alt="">
+        <img [src]="item.thumbnail">
         <ion-card-content>
-            <h2 class="card-title">Walking dead</h2>
-            <p>Based on the comic book series written by Robert Kirkman, this gritty drama portrays life in the weeks
-                and months
-                following a zombie apocalypse. Led by police officer Rick Grimes, his family and a group of other
-                survivors find
-                themselves constantly on the move in search of a safe and secure home. Bu… <a href="#">More</a></p>
+            <h2 class="card-title"></h2>
+            <p>{{item.description}} <a href="#">More</a></p>
             <button outline (click)="subscribe()">Subscribe</button>
         </ion-card-content>
     </ion-card>
