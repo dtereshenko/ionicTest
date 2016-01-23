@@ -12,8 +12,16 @@ div.selection {
   border-radius: 50%;
   text-align: center;
   line-height: 4em;
+  margin-right: .7em;
+  margin-bottom: 1em;
 }
 
 .watched {
   background-color: grey;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 1em;
 }

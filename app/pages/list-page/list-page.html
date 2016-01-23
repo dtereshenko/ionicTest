@@ -6,10 +6,11 @@
     <ion-list>
         <ion-item *ngFor="#item of items" (click)="viewDetails(item)">
             <ion-thumbnail item-left>
-                <img [src]="item.thumbnail">
+                <img class="rounded" [src]="item.thumbnail">
             </ion-thumbnail>
             <h2>{{item.title}}</h2>
-            <p>{{item.author}} • {{item.release}}</p>
+            <p>{{item.author}}</p>
+            <p>{{item.release}}</p>
         </ion-item>
     </ion-list>
 

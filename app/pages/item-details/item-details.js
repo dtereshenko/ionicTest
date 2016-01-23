@@ -15,7 +15,6 @@ export class ItemDetailsPage {
         this.seriesDetailService = seriesDetailService;
         this.seriesDetailService.getDetail(this.selectedItemId).then((item) => {
             this.item = item;
-            console.dir(this);
             console.log('Detailed data received.');
         });
     }
@@ -27,8 +26,8 @@ export class ItemDetailsPage {
         });
     }
 
-    toggleEpisode (index) {
-        this.item.watched[index] = !this.item.watched[index];
+    toggleEpisode (season, episode) {
+        this.item.watched[season][episode] = !this.item.watched[season][episode];
 
         console.log('Test clicked');
     }
