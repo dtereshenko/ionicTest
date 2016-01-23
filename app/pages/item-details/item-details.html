@@ -3,12 +3,27 @@
 </ion-navbar>
 
 <ion-content>
-    <ion-card>
-        <img [src]="item.thumbnail">
-        <ion-card-content>
-            <h2 class="card-title"></h2>
-            <p>{{item.description}} <a href="#">More</a></p>
-            <button outline (click)="subscribe()">Subscribe</button>
-        </ion-card-content>
-    </ion-card>
+    <div *ngIf="item">
+        <ion-card>
+            <img [src]="item.thumbnail">
+            <ion-card-content>
+                <h2 class="card-title">{{item.title}}</h2>
+                <p>{{item.description}} <a href="#">More</a></p>
+
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-content>
+                <h2 class="card-title">Tap watched episodes</h2>
+                <ion-row>
+                    <ion-col *ngFor="#episode of item.watched; #i = index">
+                        <div [ngClass]="{watched: item.watched[i]}" (click)="toggleEpisode(i)" class="episode">{{i+1}}
+                        </div>
+                    </ion-col>
+                </ion-row>
+
+                <button outline (click)="subscribe()">Subscribe</button>
+            </ion-card-content>
+        </ion-card>
+    </div>
 </ion-content>
