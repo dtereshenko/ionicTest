@@ -19,16 +19,18 @@ export class ItemDetailsPage {
         });
     }
 
-    subscribe() {
-        Alert.create({
-            title: 'Thanks!',
-            subTitle: 'You have succesfully subscribed to "Walkind dead" TV series.'
+    ToggleSubscribe (item) {
+        item.subscribed = !item.subscribed;
+        let subscribeAlert = Alert.create({
+            title: item.subscribed ? 'Thanks!' : 'Attention!',
+            subTitle: item.subscribed ? `You have succesfully subscribed to "${item.title}" TV series.` : `You have unsubscribed from "${item.title}". You will no longer receive push notifications about new episodes.`,
+            buttons: ['Ok']
         });
+
+        this.nav.present(subscribeAlert)
     }
 
-    toggleEpisode (season, episode) {
+    ToggleEpisode (season, episode) {
         this.item.watched[season][episode] = !this.item.watched[season][episode];
-
-        console.log('Test clicked');
     }
 }

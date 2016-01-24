@@ -9,22 +9,21 @@
             <ion-card-content>
                 <h2 class="card-title">{{item.title}}</h2>
                 <p>{{item.description}} <a href="#">More</a></p>
-                <button outline (click)="subscribe()">Subscribe</button>
+                <button [ngClass]="{'button-outline': !item.subscribed}" (click)="ToggleSubscribe(item)">{{item.subscribed ? 'Unsubscribe' : 'Subscribe'}}</button>
             </ion-card-content>
         </ion-card>
         <ion-card>
             <ion-card-content>
+                <!--[ngClass]="{watched: item.watched[seasonIndex][episodeIndex]}"-->
                 <h2 class="card-title">Tap watched episodes</h2>
                 <div *ngFor="#season of item.watched; #seasonIndex = index;">
                     <h2 class="alert-sub-title">Season # {{seasonIndex + 1}}</h2>
                     <div class="flex-container">
-                    <div *ngFor="#episode of season; #episodeIndex = index" [ngClass]="{watched: item.watched[seasonIndex][episodeIndex]}"
-                         (click)="item.watched[seasonIndex][episodeIndex] = !item.watched[seasonIndex][episodeIndex]" class="episode">{{episodeIndex + 1}}
-                    </div>
+                        <button round clear *ngFor="#episode of season; #episodeIndex = index"
+                             (click)="ToggleEpisode(seasonIndex, episodeIndex)" class="episode">{{episodeIndex + 1}}
+                        </button>
                     </div>
                 </div>
-
-
             </ion-card-content>
         </ion-card>
     </div>
