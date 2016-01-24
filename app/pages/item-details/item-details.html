@@ -8,8 +8,12 @@
             <img [src]="item.thumbnail">
             <ion-card-content>
                 <h2 class="card-title">{{item.title}}</h2>
-                <p>{{item.description}} <a href="#">More</a></p>
-                <button [ngClass]="{'button-outline': !item.subscribed}" (click)="ToggleSubscribe(item)">{{item.subscribed ? 'Unsubscribe' : 'Subscribe'}}</button>
+                <p>{{descriptionText}}
+                    <a *ngIf="descriptionText.length < item.description.length" (click)="showMore()">Show more</a>
+                    <a *ngIf="descriptionText.length == item.description.length" (click)="showLess()">Show less</a></p>
+                <button [ngClass]="{'button-outline': !item.subscribed}" (click)="toggleSubscribe(item)">
+                    {{item.subscribed ? 'Unsubscribe' : 'Subscribe'}}
+                </button>
             </ion-card-content>
         </ion-card>
         <ion-card>
@@ -19,8 +23,9 @@
                 <div *ngFor="#season of item.watched; #seasonIndex = index;">
                     <h2 class="alert-sub-title">Season # {{seasonIndex + 1}}</h2>
                     <div class="flex-container">
-                        <button round clear *ngFor="#episode of season; #episodeIndex = index"
-                             (click)="ToggleEpisode(seasonIndex, episodeIndex)" class="episode">{{episodeIndex + 1}}
+                        <button round *ngFor="#episode of season; #episodeIndex = index"
+                             [ngClass]="{'button-outline': !item.watched[seasonIndex][episodeIndex].w}"
+                             (click)="toggleEpisode(seasonIndex, episodeIndex)" class="episode">{{episodeIndex + 1}}
                         </button>
                     </div>
                 </div>
